@@ -1,0 +1,50 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-965-g55e06db6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000000000099eb70 .scope module, "alu" "alu" 2 26;
+ .timescale 0 0;
+    .port_info 0 /INPUT 256 "matrix_a_in";
+    .port_info 1 /INPUT 256 "matrix_b_in";
+    .port_info 2 /INPUT 1 "opcode_in";
+    .port_info 3 /INPUT 1 "clk_in";
+    .port_info 4 /INPUT 1 "rst_in";
+    .port_info 5 /OUTPUT 256 "matrix_result_out";
+P_00000000010e2510 .param/l "add" 0 2 40, C4<0110>;
+P_00000000010e2548 .param/l "eq" 0 2 48, C4<1110>;
+P_00000000010e2580 .param/l "gt" 0 2 46, C4<1100>;
+P_00000000010e25b8 .param/l "lrotate" 0 2 45, C4<1011>;
+P_00000000010e25f0 .param/l "lshift" 0 2 43, C4<1001>;
+P_00000000010e2628 .param/l "lt" 0 2 47, C4<1101>;
+P_00000000010e2660 .param/l "lxor" 0 2 49, C4<1111>;
+P_00000000010e2698 .param/l "m_add" 0 2 38, C4<0100>;
+P_00000000010e26d0 .param/l "m_mult" 0 2 35, C4<0001>;
+P_00000000010e2708 .param/l "m_scale" 0 2 36, C4<0010>;
+P_00000000010e2740 .param/l "m_sub" 0 2 37, C4<0011>;
+P_00000000010e2778 .param/l "m_trans" 0 2 39, C4<0101>;
+P_00000000010e27b0 .param/l "nop" 0 2 34, C4<0000>;
+P_00000000010e27e8 .param/l "rrotate" 0 2 44, C4<1010>;
+P_00000000010e2820 .param/l "rshift" 0 2 42, C4<1000>;
+P_00000000010e2858 .param/l "sub" 0 2 41, C4<0111>;
+o0000000001116fb8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000000010e3090_0 .net "clk_in", 0 0, o0000000001116fb8;  0 drivers
+o0000000001116fe8 .functor BUFZ 256, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000000011131b0_0 .net "matrix_a_in", 255 0, o0000000001116fe8;  0 drivers
+o0000000001117018 .functor BUFZ 256, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000001113570_0 .net "matrix_b_in", 255 0, o0000000001117018;  0 drivers
+o0000000001117048 .functor BUFZ 256, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0000000001113cf0_0 .net "matrix_result_out", 255 0, o0000000001117048;  0 drivers
+o0000000001117078 .functor BUFZ 1, C4<z>; HiZ drive
+v0000000001113a70_0 .net "opcode_in", 0 0, o0000000001117078;  0 drivers
+o00000000011170a8 .functor BUFZ 1, C4<z>; HiZ drive
+v0000000001113d90_0 .net "rst_in", 0 0, o00000000011170a8;  0 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "alu.v";
