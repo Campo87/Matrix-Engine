@@ -5,31 +5,35 @@
 // DESCRIPTION
 // Operations multiplication, scalar multiplication, subtraction, addition, and
 // transposition.
-//  OPCODE  INSTRUCTION
-//  0       NOP
-//  1       Matrix multiplication
-//  2       Matrix scalar multipliation
-//  3       Matrix subtraction
-//  4       Matrix addition
-//  5       Matrix transposition
-//  6       Addition
-//  7       Subtraction
-//  8       Right shift
-//  9       Left shift
-//  A       Rotate right 
-//  B       Rotate left
-//  C       Greater than
-//  D       Less than
-//  E       Equal
-//  F       Logic XOR
+// 
+// OPCODE | INSTRUCTION
+// ---------------------------------------
+// 0      | NOP
+// 1      | Matrix multiplication
+// 2      | Matrix scalar multipliation
+// 3      | Matrix subtraction
+// 4      | Matrix addition
+// 5      | Matrix transposition
+// 6      | Addition
+// 7      | Subtraction
+// 8      | Right shift
+// 9      | Left shift
+// A      | Rotate right 
+// B      | Rotate left
+// C      | Greater than
+// D      | Less than
+// E      | Equal
+// F      | Logic XOR
+// 
+// 
 // -----------------------------------------------------------------------------
 module alu(
-    input   [255:0] matrix_a_in,
-    input   [255:0] matrix_b_in,
-    input           opcode_in,
-    input           clk_in,
-    input           rst_in,
-    output  [255:0] matrix_result_out
+    input   [255:0] matrix_a_i,
+    input   [255:0] matrix_b_i,
+    input           opcode_i,
+    input           clk_i,
+    input           rst_i,
+    output  [255:0] matrix_result_o
 );
     parameter nop     = 4'h0;
     parameter m_mult  = 4'h1;
@@ -48,21 +52,24 @@ module alu(
     parameter eq      = 4'hE;
     parameter lxor    = 4'hF;
 
-    integer i, j;
-
+    integer i, j, k;
     reg  [255:0] ans;
 
     always @ (*) begin
-        case(opcode_in)
-            NOP: ans = 256'bz;
+        case(opcode_i)
+            nop: ans = 256'bz;
             m_mult: begin
-                for(j = 0; j <= 3; j = j + 1) begin
-                    for(i = 1; i <= 4; i = i + 1) begin
-                        ans[((i*16)+(j*64)-1):((i-1)*16)+(j*64)] = matrix_a_in[]
+                for(i = 0; i < 4; i = i + 1) begin
+                    for(j = 0; j < 4; j = j + 1) begin
+                        for(k = 0; k < 4; k = k + 1) begin
+                            ans[ +: 16] = matrix_ans[i][j] + (matrix_a[i][k]*matrix_b[k][j]);
+                        end
                     end
-                end 
+                end
             end
         endcase
     end
+
+    assign matrix_result_o = ans;
 
 endmodule
