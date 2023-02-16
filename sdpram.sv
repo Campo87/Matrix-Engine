@@ -31,7 +31,6 @@ module sdpram (
     output reg [255:0] q_b
 );
 
-
   // Random Access Memory
   reg [255:0] ram [15:0];
 

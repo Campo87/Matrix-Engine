@@ -16,7 +16,7 @@ module sdpram_tb ();
 
   localparam T = 10;
 
-  sdpram DUT (
+  sdpram dut (
       .d_a(d_a),
       .d_b(d_b),
       .addr_a(addr_a),
